@@ -12,10 +12,10 @@ Please do the following steps:
 Web server is starting on the default port 8080.
 
 I have implemented next endpoints:
-/images - get first images page
-/images?page= - get images by page
-/images/{id} - get image by id
-/search/{searchTerm} - get images with author and tags meta fields which matching the search term.
+1. /images - get first images page
+2. /images?page= - get images by page
+3. /images/{id} - get image by id
+4. /search/{searchTerm} - get images with an author and tags meta fields which matching the search term.
 
 All data is taken from cache without making requests to AgileEngine api endpoints.
 
