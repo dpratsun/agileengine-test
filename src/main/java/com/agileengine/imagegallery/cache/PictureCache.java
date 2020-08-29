@@ -11,5 +11,7 @@ public interface PictureCache {
 
     List<Picture> getByPage(int page);
 
+    List<Picture> search(String searchTerm);
+
     void clear();
 }

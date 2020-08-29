@@ -1,5 +1,6 @@
 package com.agileengine.imagegallery.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,10 @@ public class Picture {
     private String author;
     private String camera;
     private String tags;
-    private String cropped_picture;
-    private String full_picture;
+
+    @JsonProperty("cropped_picture")
+    private String croppedPicture;
+
+    @JsonProperty("full_picture")
+    private String fullPicture;
 }

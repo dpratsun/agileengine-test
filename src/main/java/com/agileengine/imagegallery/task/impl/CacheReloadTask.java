@@ -6,8 +6,6 @@ import com.agileengine.imagegallery.task.Task;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Component
 @AllArgsConstructor
 public class CacheReloadTask implements Task {
@@ -20,7 +18,7 @@ public class CacheReloadTask implements Task {
         cache.clear();
         int page = 1;
         var pictures = service.getPicturesByPage(page);
-        while (pictures.size() > 0 && page < 2) {
+        while (pictures.size() > 0) {
             pictures.forEach(picture -> cache.add(service.getPictureById(picture.getId())));
             pictures = service.getPicturesByPage(++page);
         }

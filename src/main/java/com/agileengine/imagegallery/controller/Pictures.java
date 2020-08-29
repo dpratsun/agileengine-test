@@ -12,7 +12,7 @@ public class Pictures {
     private final PictureService service;
 
     @GetMapping
-    public ResponseEntity<?> getImages(@RequestParam int page) {
+    public ResponseEntity<?> getImages(@RequestParam("page") int page) {
         return ResponseEntity.ok(service.getPicturesByPage(Math.max(page, 1)));
     }
 
