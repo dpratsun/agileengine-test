@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/images")
 @AllArgsConstructor
@@ -12,8 +14,8 @@ public class Pictures {
     private final PictureService service;
 
     @GetMapping
-    public ResponseEntity<?> getImages(@RequestParam("page") int page) {
-        return ResponseEntity.ok(service.getPicturesByPage(Math.max(page, 1)));
+    public ResponseEntity<?> getImages(@RequestParam(required = false) Integer page) {
+        return ResponseEntity.ok(service.getPicturesByPage(Objects.isNull(page) ? 1 : page));
     }
 
     @GetMapping("/{id}")
