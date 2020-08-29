@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class InMemoryPictureCache implements PictureCache {
@@ -47,6 +44,8 @@ public class InMemoryPictureCache implements PictureCache {
             picturesByPage.put(currentPage, new ArrayList<>(List.of(picture)));
         }
         addToTree(picture.getAuthor(), picture.getId(), 0, head);
+        Arrays.stream(picture.getTags().split(" "))
+                .forEach(tag -> addToTree(tag.substring(1), picture.getId(), 0, head));
     }
 
     @Override
