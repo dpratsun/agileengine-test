@@ -45,6 +45,7 @@ public class InMemoryPictureCache implements PictureCache {
         }
         addToTree(picture.getAuthor(), picture.getId(), 0, head);
         Arrays.stream(picture.getTags().split(" "))
+                .filter(tag -> tag.length() > 1)
                 .forEach(tag -> addToTree(tag.substring(1), picture.getId(), 0, head));
     }
 
