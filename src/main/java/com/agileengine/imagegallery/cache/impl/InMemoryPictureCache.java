@@ -19,6 +19,7 @@ public class InMemoryPictureCache implements PictureCache {
 
     @Override
     public void add(Picture picture) {
+        System.out.println(picture);
         pictures.put(picture.getId(), picture);
         int currentPage = (int) Math.ceil((float)pictures.size()/itemsPerPage);
         if (picturesByPage.containsKey(currentPage)) {

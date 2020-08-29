@@ -28,10 +28,12 @@ public class RestTemplateAgileEnginePictureService implements AgileEnginePicture
         String url = IMAGES_ENDPOINT + PAGE_REQUEST_PARAMETER + page;
         HttpHeaders headers = prepareHeaders();
 
-        ResponseEntity<GetPicturesResponse> response = restTemplate
-                .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), GetPicturesResponse.class);
+        ResponseEntity<GetPicturesResponse> response;
 
-        if (response.getStatusCode() != HttpStatus.OK) {
+        try {
+            response = restTemplate
+                    .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), GetPicturesResponse.class);
+        } catch (Exception e) {
             headers.setBearerAuth(tokenService.renew());
             response = restTemplate
                     .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), GetPicturesResponse.class);
@@ -46,10 +48,12 @@ public class RestTemplateAgileEnginePictureService implements AgileEnginePicture
 
         HttpHeaders headers = prepareHeaders();
 
-        ResponseEntity<Picture> response = restTemplate
-                .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), Picture.class);
+        ResponseEntity<Picture> response;
 
-        if (response.getStatusCode() != HttpStatus.OK) {
+        try {
+            response = restTemplate
+                    .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), Picture.class);
+        } catch (Exception e) {
             headers.setBearerAuth(tokenService.renew());
             response = restTemplate
                     .exchange(url, HttpMethod.GET, new HttpEntity<>(headers), Picture.class);

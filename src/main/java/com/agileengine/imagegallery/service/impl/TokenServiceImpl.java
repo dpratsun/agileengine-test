@@ -19,7 +19,6 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    @PostConstruct
     public String renew() {
         token = service.getToken();
 

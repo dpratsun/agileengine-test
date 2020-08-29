@@ -16,15 +16,12 @@ public class CacheReloadTask implements Task {
     private final AgileEnginePictureService service;
 
     @Override
-    @PostConstruct
     public void perform() {
         cache.clear();
         int page = 1;
         var pictures = service.getPicturesByPage(page);
-        while (pictures.size() > 0) {
-            pictures.forEach(picture -> {
-                cache.add(service.getPictureById(picture.getId()));
-            });
+        while (pictures.size() > 0 && page < 2) {
+            pictures.forEach(picture -> cache.add(service.getPictureById(picture.getId())));
             pictures = service.getPicturesByPage(++page);
         }
     }
