@@ -21,7 +21,7 @@ All data is taken from cache without making requests to AgileEngine api endpoint
 
 Unfortunately I didn't use all meta fields for search in case of limit time amount.
 
-For search implementing I used prefix tree algorithm:
+For search implementation prefix tree algorithm was used:
 https://www.educative.io/edpresso/what-is-a-prefix-tree  
 
 I tried to make my code readable, loosely coupled and easy maintainable.
