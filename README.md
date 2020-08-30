@@ -33,4 +33,7 @@ Of course there are many things still left to do like:
 4. Renew of a cache can be implemented with scheduling
 5. Make processing of response status codes more clear
 6. Search algorithm should be separated from cache implemetation file
+7. Also inmemory storage it is not good idea to reach fault tolerance and scalability 
+of the system so it could be changed to MongoDb because it is very fast and scalable.
+Mongo also gives a possibility to make text search.
 
